@@ -21,6 +21,15 @@ const editUser = (req, res) => {
   res.render("edit", { name, id });
 };
 
+const deleteUser = (req, res, next) => {
+  User.findByIdAndRemove(req.query.id, (err, doc) => {
+    if (err) {
+      return console.log("Failed to Delete user Details ");
+    }
+    return res.redirect("back");
+  });
+};
+
 const updateUser = (req, res) => {
   const { id } = req.params;
   User.findByIdAndUpdate(
@@ -51,4 +60,4 @@ const saveData = (req, res) => {
   });
 };
 
-module.exports = { home, saveData, show, editUser, updateUser };
+module.exports = { home, saveData, show, editUser, updateUser, deleteUser };

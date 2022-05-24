@@ -30,6 +30,8 @@ app.get("/show", userController.show);
 
 app.get("/edit", userController.editUser);
 
+app.get("/show/:id", userController.deleteUser);
+
 app.post("/updatedata/:id", userController.updateUser);
 
 app.post("/adduser", userController.saveData);
