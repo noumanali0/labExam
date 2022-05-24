@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title><%= title%></title>
+  </head>
+  <body style="text-align: center">
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Email</th>
+          <th>Phone</th>
+          <th>City</th>
+          <th>Postcode</th>
+          <th>Delete</th>
+          <th>Edit</th>
+        </tr>
+      </thead>
+      <tbody>
+        <%for(let i of data) {%>
+
+        <tr>
+          <td><%= i.name%></td>
+          <td><%= i.email%></td>
+          <td><%= i.phone%></td>
+          <td><%= i.city%></td>
+          <td><%= i.zit%></td>
+
+          <td><a href="show/?id=<%=i._id%>">X</a></td>
+          <td><a href="edit/?id=<%=i._id%>&email=<%=i.email%>">Edit</a></td>
+        </tr>
+
+        <%}%>
+      </tbody>
+    </table>
+  </body>
+</html>
