@@ -16,6 +16,31 @@ const show = (req, res) => {
   });
 };
 
+const editUser = (req, res) => {
+  const { name, id } = req.query;
+  res.render("edit", { name, id });
+};
+
+const updateUser = (req, res) => {
+  const { id } = req.params;
+  User.findByIdAndUpdate(
+    id,
+    {
+      image: req.files.image,
+      name: req.body.name,
+      email: req.body.email,
+      phone: req.body.phone,
+      state: req.body.state,
+      city: req.body.city,
+      address: req.body.address,
+      zip: req.body.zip,
+    },
+    () => {
+      return res.redirect("/show");
+    }
+  );
+};
+
 const saveData = (req, res) => {
   const img = req.files.image;
   img.mv(path.resolve(__dirname, "../assets/images", img.name), (err) => {
@@ -26,4 +51,4 @@ const saveData = (req, res) => {
   });
 };
 
-module.exports = { home, saveData, show };
+module.exports = { home, saveData, show, editUser, updateUser };

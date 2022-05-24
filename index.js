@@ -2,6 +2,7 @@ const express = require("express");
 const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
 const fileUpload = require("express-fileupload");
+const path = require("path");
 
 const userController = require("./controllers/usercontroller");
 
@@ -22,8 +23,14 @@ app.set("view engine", "ejs");
 
 app.use(bodyParser.urlencoded({ extended: true }));
 
+app.use(express.static(path.resolve(__dirname, "assets")));
+
 app.get("/", userController.home);
 app.get("/show", userController.show);
+
+app.get("/edit", userController.editUser);
+
+app.post("/updatedata/:id", userController.updateUser);
 
 app.post("/adduser", userController.saveData);
 

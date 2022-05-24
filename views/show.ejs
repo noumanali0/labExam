@@ -7,6 +7,7 @@
     <table>
       <thead>
         <tr>
+          <th>Image</th>
           <th>Name</th>
           <th>Email</th>
           <th>Phone</th>
@@ -18,16 +19,17 @@
       </thead>
       <tbody>
         <%for(let i of data) {%>
-
         <tr>
+          <td><img width="100" src="<%= /images/i.image%>" alt="" /></td>
           <td><%= i.name%></td>
+
           <td><%= i.email%></td>
           <td><%= i.phone%></td>
           <td><%= i.city%></td>
           <td><%= i.zit%></td>
 
           <td><a href="show/?id=<%=i._id%>">X</a></td>
-          <td><a href="edit/?id=<%=i._id%>&email=<%=i.email%>">Edit</a></td>
+          <td><a href="edit/?id=<%=i._id%>&name=<%=i.name%>">Edit</a></td>
         </tr>
 
         <%}%>
